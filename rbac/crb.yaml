@@ -10,4 +10,3 @@ subjects:
 - kind: ServiceAccount
   name: apple-crb-sa
   namespace: apple
-
