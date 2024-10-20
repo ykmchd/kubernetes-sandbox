@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: apple
+  name: apple-crb
+  namespace: apple
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apple-crb
+  template:
+    metadata:
+      labels:
+        app: apple-crb
+    spec:
+      serviceAccountName: apple-crb-sa
+      containers:
+      - name: apple-kubectl
+        image: bitnami/kubectl:latest
+        command: ["sh", "-c", "while true; do sleep 3600; done"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: apple
+  name: apple-rb
+  namespace: apple
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apple-rb
+  template:
+    metadata:
+      labels:
+        app: apple-rb
+    spec:
+      serviceAccountName: apple-rb-sa
+      containers:
+      - name: apple-kubectl
+        image: bitnami/kubectl:latest
+        command: ["sh", "-c", "while true; do sleep 3600; done"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: banana
+  name: banana
+  namespace: banana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: banana
+  template:
+    metadata:
+      labels:
+        app: banana
+    spec:
+      containers:
+      - name: busybox
+        image: busybox:1.37
+        command: ["sh", "-c", "while true; do sleep 3600; done"]
+

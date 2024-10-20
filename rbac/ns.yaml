@@ -1,0 +1,13 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: apple
+  labels:
+    name: apple
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: banana
+  labels:
+    name: banana
