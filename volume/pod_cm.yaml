@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: log-config
+data:
+  log_level: |
+    log_level=3
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-cm
+spec:
+  containers:
+    - name: test
+      image: nginx:alpine
+      volumeMounts:
+        - name: config-vol
+          mountPath: /etc/config/log_level
+          subPath: log_level
+  volumes:
+    - name: config-vol
+      configMap:
+        name: log-config
+        items:
+          - key: log_level
+            path: log_level
