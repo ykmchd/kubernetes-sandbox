@@ -12,16 +12,16 @@ metadata:
   name: pod-cm
 spec:
   containers:
-    - name: test
-      image: nginx:alpine
-      volumeMounts:
-        - name: config-vol
-          mountPath: /etc/config/log_level
-          subPath: log_level
-  volumes:
+  - name: test
+    image: nginx:alpine
+    volumeMounts:
     - name: config-vol
-      configMap:
-        name: log-config
-        items:
-          - key: log_level
-            path: log_level
+      mountPath: /etc/config/log_level
+      subPath: log_level
+  volumes:
+  - name: config-vol
+    configMap:
+      name: log-config
+      items:
+      - key: log_level
+        path: log_level
