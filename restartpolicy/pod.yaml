@@ -1,0 +1,90 @@
+---
+# kubectl run run-pod
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: run-pod
+  name: run-pod
+spec:
+  containers:
+  - image: nginx:alpine
+    name: run-pod
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+---
+# kubectl run run-pod-onfailure --restart=OnFailure
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: run-pod-onfailure
+  name: run-pod-onfailure
+spec:
+  containers:
+  - image: nginx:alpine
+    name: run-pod-onfailure
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: OnFailure
+---
+# kubectl run run-pod-never --restart=Never
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: run-pod-never
+  name: run-pod-never
+spec:
+  containers:
+  - image: nginx:alpine
+    name: run-pod-never
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+---
+# kubectl create job job-pod
+apiVersion: batch/v1
+kind: Job
+metadata:
+  creationTimestamp: null
+  name: job-pod
+spec:
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - image: nginx:alpine
+        name: job-pod
+        resources: {}
+      restartPolicy: Never
+---
+# kubectl create deploy deploy-job
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: deploy-pod
+  name: deploy-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deploy-pod
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: deploy-pod
+    spec:
+      containers:
+      - image: nginx:alpine
+        name: nginx
+        resources: {}
