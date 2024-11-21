@@ -44,5 +44,10 @@ kubectl config set-credentials user --client-certificate=user.crt --client-key=u
 rue
 kubectl config set-context kind-sandbox-user --cluster=kind-sandbox --user=user
 ubernetes-sandbox/csr on  main [?] on ☁️  ykmchd@gmail.com(us-west1) 
-k config use-context kind-sandbox-user 
+kubectl config use-context kind-sandbox-user
+```
+
+exec kubectl
+```
+kubectl get all -A
 ```
