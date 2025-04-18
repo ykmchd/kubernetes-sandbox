@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  generateName: sample-pod-
+spec:
+  containers:
+  - name: sample-container
+    image: nginx:1.16
