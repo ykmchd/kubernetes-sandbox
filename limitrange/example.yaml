@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: limits
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: limits
+  namespace: limits
+spec:
+  limits:
+  - type: Container
+    default:
+      cpu: 1000m
+      memory: 1Gi
+    defaultRequest:
+      cpu: 1000m
+      memory: 1Gi
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example
+  namespace: limits
+spec:
+  containers:
+  - name: example
+    image: nginx
