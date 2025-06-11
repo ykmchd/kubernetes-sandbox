@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: pod-sa001
+  name: pod-sa001
+spec:
+  serviceAccountName: sa001
+  containers:
+  - image: busybox:1.28
+    name: pod-sa001
+    command: ["sleep", "3600"]

@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  creationTimestamp: null
+  name: sa001-podlist
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: podlist
+subjects:
+- kind: ServiceAccount
+  name: sa001
+  namespace: default
